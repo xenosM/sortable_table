@@ -6,7 +6,21 @@ let year_input = document.querySelector("#year_input");
 let search_input = document.querySelector("#search_input");
 let input_field = document.querySelectorAll(".input_field");
 let table = document.querySelector(".table");
-let data = [];
+let addBtn = document.querySelector(".add_item_btn");
+let updateBtn = document.querySelector(".update_item_btn");
+let data = [
+  {
+    name: "mejal",
+    cat: "general",
+    year: 2005,
+  },
+  {
+    name: "ram",
+    cat: "css",
+    year: 2022,
+  },
+];
+let indexToEdit;
 //* Function Declaration
 function submit(e) {
   e.preventDefault();
@@ -19,7 +33,7 @@ function submit(e) {
   input_field.forEach((item) => (item.value = ""));
 
   //* removes all the rows
-  removeAllRow();
+  removeAllRows();
   //* insert value into var data
   data.push({
     name: name_value,
@@ -50,10 +64,76 @@ function addRow(item, index) {
   c3.innerText = item.year;
   c4.innerText = "✍";
   c5.innerText = "☒";
+  //* make edit and delete btn interactive
+  c4.classList.add("zoom");
+  c5.classList.add("zoom");
+  c4.onclick = () => {
+    editRow(c4, index);
+  };
+  c5.onclick = () => {
+    deleteRow();
+  };
 }
-function removeAllRow() {
+function removeAllRows() {
   while (table.rows.length > 1) table.deleteRow(-1);
 }
+function editRow(column, index) {
+  console.log(index);
+  if (!column.classList.contains("open")) {
+    removeClassOpen();
+    column.classList.add("open");
 
+    //* insert value into input element
+    name_input.value = data[index].name;
+    category_input.value = data[index].cat;
+    year_input.value = data[index].year;
+
+    //* switch to update btn
+    showUpdateBtn();
+    //* declare the index which is to be edited
+    indexToEdit = index;
+  } else {
+    removeClassOpen();
+
+    //* clear the input fields
+    resetInput();
+
+    //* switch to add btn
+    showAddBtn();
+  }
+}
+function submitEdit() {
+  data[indexToEdit] = {
+    name: name_input.value,
+    cat: category_input.value,
+    year: year_input.value,
+  };
+  resetInput();
+  showAddBtn();
+  removeAllRows();
+  data.map((item, index) => addRow(item, index));
+}
+function deleteRow() {}
+function showUpdateBtn() {
+  addBtn.classList.add("hidden");
+  updateBtn.classList.remove("hidden");
+}
+function showAddBtn() {
+  addBtn.classList.remove("hidden");
+  updateBtn.classList.add("hidden");
+}
+function removeClassOpen() {
+  document.querySelectorAll(".zoom").forEach((item) => {
+    item.classList.remove("open");
+  });
+}
+function resetInput() {
+  name_input.value = "";
+  category_input.value = "";
+  year_input.value = "";
+}
 //* main code
 form.onsubmit = (event) => submit(event);
+updateBtn.onclick = () => submitEdit();
+
+data.map((item, index) => addRow(item, index));

@@ -17,15 +17,19 @@ body {
       font-size: 1rem;
       border-radius: 2px;
       border: solid gainsboro 1px;
-      width: 20rem;
+      width: clamp(5rem, 25%, 20rem);
       outline: none;
     }
-    .add_item_btn {
+    .btn {
       background-color: rgb(3, 164, 3);
       padding: 0.5rem 2rem;
+      width: clamp(5rem, 25%, 10rem);
       border-radius: 3px;
       font-size: 1rem;
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+    .hidden {
+      display: none;
     }
   }
 }
@@ -68,4 +72,13 @@ body {
       width: 10%;
     }
   }
+}
+.zoom {
+  text-align: center !important;
+  cursor: pointer;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+  color: rgb(255, 0, 0);
 }
