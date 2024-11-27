@@ -1,0 +1,61 @@
+/* ROOT VARIABLES */
+/* Colors */
+:root {
+  --clr-teal: #04ddb2;
+  --clr-dark: #333;
+  --clr-gray: #767676;
+  --clr-white: #fff;
+}
+/* Sizes */
+:root {
+  --size-xs: 0.5rem; /*8px*/
+  --size-sm: 0.75rem; /*12px*/
+  --size-base: 1rem; /* 16px */
+  --size-lg: 1.125rem; /* 18px */
+  --size-xl: 1.25rem; /* 20px */
+  --size-2xl: 1.5rem; /* 24px */
+  --size-3xl: 1.875rem; /* 30px */
+  --size-4xl: 2.25rem; /* 36px */
+  --size-5xl: 3rem; /* 48px */
+  --size-6xl: 3.75rem; /* 60px */
+  --size-7xl: 4.5rem; /* 72px */
+  --size-8xl: 6rem; /* 96px */
+  --size-9xl: 8rem; /* 128px */
+  --size-10xl: 10rem; /* 160px */
+}
+
+/*GENERAL STYLING  */
+
+* {
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Lab Grotesque";
+}
+button {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+/* PROJECT GENERAL STYLING */
+.flex {
+  display: flex;
+}
+.flex_column {
+  flex-direction: column;
+}
+.flex_center {
+  justify-content: center;
+  align-items: center;
+}

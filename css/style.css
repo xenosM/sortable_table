@@ -1,0 +1,71 @@
+body {
+  padding: 2rem;
+}
+
+.input_container {
+  background-color: whitesmoke;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+
+  .input_groups {
+    margin-top: 3rem;
+    justify-content: space-between;
+
+    .input_field {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 2px;
+      border: solid gainsboro 1px;
+      width: 20rem;
+      outline: none;
+    }
+    .add_item_btn {
+      background-color: rgb(3, 164, 3);
+      padding: 0.5rem 2rem;
+      border-radius: 3px;
+      font-size: 1rem;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+.search_container {
+  #search_input {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    border-radius: 2px;
+    border: solid gainsboro 1px;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.table_container {
+  margin-top: 3rem;
+  .table {
+    margin: 0;
+    border: solid gray 1px;
+    border-collapse: collapse;
+    font-size: 1.25rem;
+    th,
+    td {
+      text-align: left;
+      padding: 0.75rem 1.25rem;
+    }
+    tr {
+      border-bottom: solid gray 1px;
+    }
+    tr:first-child {
+      background-color: greenyellow;
+    }
+
+    #number_column,
+    #year_column,
+    #edit_column,
+    #delete_column {
+      width: 10%;
+    }
+  }
+}

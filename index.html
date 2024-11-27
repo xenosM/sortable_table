@@ -3,6 +3,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>sortable table</title>
+    <link rel="stylesheet" href="css/general__blueprint.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body></body>
+  <body>
+    <h1>Custom table</h1>
+    <section class="input_container flex flex_column">
+      <h2>Add Item</h2>
+      <form class="input_groups flex">
+        <input
+          type="text"
+          class="input_field"
+          id="name_input"
+          required
+          placeholder="Enter Name"
+        />
+        <input
+          type="text"
+          class="input_field"
+          id="category_input"
+          required
+          placeholder="Enter Category"
+        />
+        <input
+          type="number"
+          class="input_field"
+          id="year_input"
+          required
+          placeholder="Enter year"
+        />
+        <button type="submit" class="btn add_item_btn">Add item</button>
+      </form>
+    </section>
+    <section class="search_container">
+      <h1>Search for Item...</h1>
+      <input type="text" id="search_input" placeholder="Search for name..." />
+    </section>
+    <section class="table_container">
+      <table class="table">
+        <tr class="header_row">
+          <th class="table_column" id="number_column">S.no</th>
+          <th class="table_column" id="name_column">Name</th>
+          <th class="table_column" id="category_column">Category</th>
+          <th class="table_column" id="year_column">Year</th>
+          <th class="table_column" id="edit_column">Edit Entry</th>
+          <th class="table_column" id="delete_column">Delete Entry</th>
+        </tr>
+      </table>
+    </section>
+  </body>
+  <script src="js/app.js"></script>
 </html>
