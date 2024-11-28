@@ -42,7 +42,7 @@ function submit(e) {
   });
 
   //*add a row using data.map() which returns an array after triggering a function on every item of array data
-  data.map((item, index) => addRow(item, index));
+  initiateAddRow();
 }
 function addRow(item, index) {
   //* variable declaration
@@ -71,7 +71,7 @@ function addRow(item, index) {
     editRow(c4, index);
   };
   c5.onclick = () => {
-    deleteRow();
+    deleteRow(item);
   };
 }
 function removeAllRows() {
@@ -111,9 +111,14 @@ function submitEdit() {
   resetInput();
   showAddBtn();
   removeAllRows();
-  data.map((item, index) => addRow(item, index));
+  initiateAddRow();
 }
-function deleteRow() {}
+function deleteRow(itemToDelete) {
+  removeAllRows();
+  //* filter the data as to leave out the itemToDelete
+  data = data.filter((item) => item.name !== itemToDelete.name);
+  initiateAddRow();
+}
 function showUpdateBtn() {
   addBtn.classList.add("hidden");
   updateBtn.classList.remove("hidden");
@@ -132,8 +137,11 @@ function resetInput() {
   category_input.value = "";
   year_input.value = "";
 }
+function initiateAddRow() {
+  data.map((item, index) => addRow(item, index));
+}
 //* main code
 form.onsubmit = (event) => submit(event);
 updateBtn.onclick = () => submitEdit();
 
-data.map((item, index) => addRow(item, index));
+initiateAddRow();
