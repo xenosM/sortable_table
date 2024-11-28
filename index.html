@@ -46,9 +46,19 @@
       <table class="table">
         <tr class="header_row">
           <th class="table_column" id="number_column">S.no</th>
-          <th class="table_column" id="name_column">Name</th>
-          <th class="table_column" id="category_column">Category</th>
-          <th class="table_column" id="year_column">Year</th>
+          <th class="table_column" id="name_column" onclick="sortName()">
+            Name
+          </th>
+          <th
+            class="table_column"
+            id="category_column"
+            onclick="sortCategory()"
+          >
+            Category
+          </th>
+          <th class="table_column" id="year_column" onclick="sortYear()">
+            Year
+          </th>
           <th class="table_column" id="edit_column">Edit Entry</th>
           <th class="table_column" id="delete_column">Delete Entry</th>
         </tr>

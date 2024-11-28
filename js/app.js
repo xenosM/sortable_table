@@ -19,7 +19,22 @@ let data = [
     cat: "css",
     year: 2022,
   },
+  {
+    name: "anand",
+    cat: "html",
+    year: 2022,
+  },
+  {
+    name: "gevin",
+    cat: "java",
+    year: 2022,
+  },
 ];
+let flag = {
+  name: false,
+  cat: false,
+  year: false,
+};
 let indexToEdit;
 //* Function Declaration
 function submit(e) {
@@ -119,6 +134,16 @@ function deleteRow(itemToDelete) {
   data = data.filter((item) => item.name !== itemToDelete.name);
   initiateAddRow();
 }
+function searchItem() {
+  inputValue = search_input.value;
+  let filterItem = [];
+  filterItem = data.filter((item) => {
+    return item.name.toLowerCase().includes(inputValue.toLowerCase());
+  });
+  removeAllRows();
+  filterItem.forEach((item, index) => addRow(item, index));
+}
+
 function showUpdateBtn() {
   addBtn.classList.add("hidden");
   updateBtn.classList.remove("hidden");
@@ -140,8 +165,46 @@ function resetInput() {
 function initiateAddRow() {
   data.map((item, index) => addRow(item, index));
 }
+function sortName() {
+  let sortedArray = [];
+  sortedArray = data.toSorted((a, b) => {
+    let fa = a.name.toLowerCase();
+    let fb = b.name.toLowerCase();
+    if (fa > fb) return 1;
+    if (fb > fa) return -1;
+    return 0;
+  });
+  if (flag.name) sortedArray.reverse();
+  flag.name = !flag.name;
+  showSortedArray(sortedArray);
+}
+function sortCategory() {
+  let sortedArray = [];
+  sortedArray = data.toSorted((a, b) => {
+    let fa = a.cat.toLowerCase();
+    let fb = b.cat.toLowerCase();
+    if (fa > fb) return 1;
+    if (fb > fa) return -1;
+    return 0;
+  });
+  if (flag.cat) sortedArray.reverse();
+  flag.cat = !flag.cat;
+  showSortedArray(sortedArray);
+}
+function sortYear() {
+  let sortedArray = [];
+  sortedArray = data.toSorted((a, b) => a.year - b.year);
+  if (flag.year) sortedArray.reverse();
+  flag.year = !flag.year;
+  showSortedArray(sortedArray);
+}
+function showSortedArray(sortedArray) {
+  removeAllRows();
+  sortedArray.forEach((item, index) => addRow(item, index));
+}
+
 //* main code
 form.onsubmit = (event) => submit(event);
 updateBtn.onclick = () => submitEdit();
-
+search_input.oninput = () => searchItem();
 initiateAddRow();
